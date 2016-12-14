@@ -58,3 +58,19 @@ Android http
   ```
 说明：此library用于Android HTTP 网络请求，有GET、POST请求，用tag绑定Activity生命周期。这个是我在听了大神stay讲的Http框架后写的，<br>
 加入了自己的想法，和常用习惯，后续还会添加新内容。
+
+
+```Java
+引用：
+1、Add it in your root build.gradle at the end of repositories:
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+2、Add the dependency
+dependencies {
+	        compile 'com.github.hhllnw:AndroidHttp:v1.0'
+	}
+```
