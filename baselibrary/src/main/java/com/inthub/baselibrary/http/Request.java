@@ -3,6 +3,8 @@ package com.inthub.baselibrary.http;
 import android.content.Context;
 import android.os.Build;
 
+import com.inthub.baselibrary.R;
+import com.inthub.baselibrary.common.BaseUtilty;
 import com.inthub.baselibrary.http.core.RequestTask;
 import com.inthub.baselibrary.http.entities.FileEntity;
 import com.inthub.baselibrary.http.err.AppException;
@@ -13,7 +15,6 @@ import com.inthub.baselibrary.http.manager.RequestManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 
 /**
@@ -31,12 +32,11 @@ public class Request {
 
     public enum RequestFormat {JSON}
 
-    private Context context;
+    private  Context context;
     private RequestMethod method;
     private RequestTool tool;//default OKHTTP
     private RequestFormat requestFormat;//default json
 
-    private static String hostUrl;
     private String url;
     private String content;
     private HashMap<String, String> header;
@@ -192,13 +192,6 @@ public class Request {
         this.dialogListener = dialogListener;
     }
 
-    public static String getHostUrl() {
-        return hostUrl;
-    }
-
-    public void setHostUrl(String hostUrl) {
-        this.hostUrl = hostUrl;
-    }
 
     private Request(Builder builder) {
 
@@ -263,7 +256,7 @@ public class Request {
         }
 
         public Builder url(String url) {
-            this.url = getHostUrl() + url;
+            this.url =  url;
             return this;
         }
 
