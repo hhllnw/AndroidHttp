@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="mSwipeRefreshLayout" type="id"></item>
+    <item name="mRecyclerView" type="id"></item>
+    <item name="mPullRecycler" type="id"></item>
+    <item name="tv_noData" type="id"></item>
+</resources>
