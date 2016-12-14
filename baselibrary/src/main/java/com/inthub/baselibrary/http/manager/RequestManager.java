@@ -51,7 +51,7 @@ public class RequestManager {
             return;
         }
 
-        request.setHostUrl(hostUrl);
+        //request.setHostUrl(hostUrl);
 
         if (request.isShowDialog() && dialogListener != null) {
             dialogListener.showDialog(dialogTip);
