@@ -3,6 +3,9 @@ package com.example.a92083.androidhttp.activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import com.example.a92083.androidhttp.R;
+import com.inthub.baselibrary.http.Request;
+import com.inthub.baselibrary.http.callback.StringCallBack;
+import com.inthub.baselibrary.http.err.AppException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private void getTest(){
 
         String url = "http://192.168.0.189/data.xml";
-        /*new Request.Builder()
+        new Request.Builder()
                 .with(this)
                 .url(url)
                 .tag(toString())
@@ -34,6 +37,6 @@ public class MainActivity extends AppCompatActivity {
                     public void onFailure(AppException e) {
                            e.printStackTrace();
                     }
-                }).build();*/
+                }).build();
     }
 }
