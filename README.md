@@ -70,6 +70,6 @@ allprojects {
 	}
 2、Add the dependency
 dependencies {
-	        compile 'com.github.hhllnw:AndroidHttp:v1.0'
+	        compile 'com.github.hhllnw:AndroidHttp:v1.2.1'
 	}
 ```
