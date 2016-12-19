@@ -99,11 +99,6 @@ public class RequestTask extends AsyncTask<Void, Integer, Object> {
     }
 
     @Override
-    protected void onCancelled() {
-        super.onCancelled();
-    }
-
-    @Override
     protected void onProgressUpdate(Integer... values) {
         super.onProgressUpdate(values);
         request.getCallBack().onProgressUpdated(values[0], values[1], values[2]);

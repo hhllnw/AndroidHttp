@@ -2,7 +2,6 @@ package com.inthub.baselibrary.http.callback;
 
 import com.inthub.baselibrary.common.BaseUtilty;
 import com.inthub.baselibrary.common.Logger;
-import com.inthub.baselibrary.http.Request;
 import com.inthub.baselibrary.http.err.AppException;
 import com.inthub.baselibrary.http.listener.ICallBack;
 
@@ -11,8 +10,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.util.List;
-import java.util.Map;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.InflaterInputStream;
 

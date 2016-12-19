@@ -1,6 +1,46 @@
 # AndroidHttp
-Android http
+ ```Java
+说明：此library用于Android HTTP 网络请求，有GET、POST，DELETE,PUT网络请求；网络请求可以绑定Activity生命周期；
+     这个是在听了大神stay讲的Http框架后写的，加入了自己的想法和常用习惯，后续还会添加新内容；
+ ```
+ ```Java
+##一：添加依赖：
+     1、Add it in your root build.gradle at the end of repositories:
+   allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+
+    2、Add the dependency
+    dependencies {
+	        compile 'com.github.hhllnw:AndroidHttp:v1.2.2'
+	     }
+```
 ```Java
+二：使用方法：
+1、在你的项目里新建名为BaseActivity的父Activity,BaseActivity继承AppActivity；
+
+2、   //重写此方法，设置缓冲UI中的文字
+      protected void setProgressDialogMessage() {
+          mRequestManager.setProgressDialogListener(this, "请稍后...");
+      }
+3、 //在BaseActivity中写异常那个处理逻辑
+    public boolean handleExpection(AppException e) {
+            if (e.getStatusCode() == 401) {
+                //such as token inavlid,need to relogin
+                return true;
+            }
+            return false;
+        }
+4、//设置缓冲UI样式设置
+   public void showDialog(String message) {
+
+       }
+ ```
+
+ ```Java
   POST:
         String url = "";
         HashMap<String, Object> map = new HashMap<>();
@@ -11,7 +51,8 @@ Android http
                 .url(url)
                 .paramMap(map)//请求参数
                 .requestMethod(Request.RequestMethod.POST)//默认GET请求
-                .tag(toString())//必须添加tag,不一定用toString(),用于绑定activity生命周期
+                .tag(toString())//必须添加tag,参数必须为toString(),用于绑定activity生命周期
+                .OnGlobalExpectionListener(this)//异常统一处理，必选项
                 .callBack(new JsonCallBack<AccountEntity>() {
                     @Override
                     public void onSuccess(AccountEntity result) {
@@ -23,9 +64,8 @@ Android http
 
                     }
                 }).build();
- ```
                 
-  ```Java
+
   GET：
         String url = "";
         HashMap<String, Object> map = new HashMap<>();
@@ -38,6 +78,7 @@ Android http
                 .requestMethod(Request.RequestMethod.GET)//默认GET请求
                 .isEnableProgressUpdate(true)//进度UI更新,和下面onProgressUpdated(int type, int curLen, int totalLen)连用
                 .tag(toString())
+                .OnGlobalExpectionListener(this)
                 .callBack(new StringCallBack() {
                     @Override
                     public void onProgressUpdated(int type, int curLen, int totalLen) {//进度UI更新，如果有需求可重写此方法
@@ -56,20 +97,3 @@ Android http
                     }
                 }).build();
   ```
- ```Java
-说明：此library用于Android HTTP 网络请求，有GET、POST请求，用tag绑定Activity生命周期。这个是我在听了大神stay讲的Http框架后写的，<br>
-加入了自己的想法，和常用习惯，后续还会添加新内容。
-
-##使用方法：
-1、Add it in your root build.gradle at the end of repositories:
-allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
-2、Add the dependency
-dependencies {
-	        compile 'com.github.hhllnw:AndroidHttp:v1.2.1'
-	}
-```
