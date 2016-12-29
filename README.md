@@ -1,7 +1,7 @@
 # AndroidHttp
  ```Java
-说明：此library用于Android HTTP 网络请求，有GET、POST，DELETE,PUT网络请求；网络请求可以绑定Activity生命周期；
-     这个是在听了大神stay讲的Http框架后写的，加入了自己的想法和常用习惯，后续还会添加新内容；
+说明：此library用于Android HTTP 网络请求，有GET、POST，DELETE,PUT网络请求
+
  ```
  ```Java
 ##一：添加依赖：
