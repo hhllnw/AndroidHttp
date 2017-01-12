@@ -15,7 +15,7 @@
 
     2、Add the dependency
     dependencies {
-	        compile 'com.github.hhllnw:AndroidHttp:v1.2.2'
+	        compile 'com.github.hhllnw:AndroidHttp:v1.2.3'
 	     }
 ```
 ```Java
