@@ -13,9 +13,7 @@ import com.inthub.baselibrary.http.upload.UploadUtil;
 
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InterruptedIOException;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -118,8 +116,12 @@ public class HttpUrlConnectionUtil {
             throw new AppException(AppException.ErrType.SERVER, e.getMessage());
         } finally {
             try {
-                outputStream.flush();
-                outputStream.close();
+                if (outputStream != null){
+                    outputStream.flush();
+                    outputStream.close();
+                }else {
+                    throw new AppException(AppException.ErrType.SERVER, "outputstream is null");
+                }
             } catch (IOException e) {
                 throw new AppException(AppException.ErrType.IO, "the post outputstream can't be closed");
             }

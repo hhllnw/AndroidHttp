@@ -22,7 +22,6 @@ public class RequestManager {
     private ExecutorService executors;
     private ProgressDialogListener dialogListener;
     private String dialogTip;
-    private String hostUrl;
 
     public static RequestManager newInstance() {
         if (mInstance == null) {
@@ -32,14 +31,13 @@ public class RequestManager {
     }
 
     private RequestManager() {
-        mCahceRequestMap = new HashMap<>();
+        mCahceRequestMap = new HashMap<String, List<Request>>();
         executors = Executors.newFixedThreadPool(5);
     }
 
-    public void setProgressDialogListener(ProgressDialogListener dialogListener, String hostUrl, String dialogTip) {
+    public void setProgressDialogListener(ProgressDialogListener dialogListener, String dialogTip) {
         this.dialogListener = dialogListener;
         this.dialogTip = dialogTip;
-        this.hostUrl = hostUrl;
     }
 
     /**
@@ -61,7 +59,7 @@ public class RequestManager {
 
         request.execute(executors);
         if (!mCahceRequestMap.containsKey(request.getTag())) {
-            List<Request> requests = new ArrayList<>();
+            List<Request> requests = new ArrayList<Request>();
             mCahceRequestMap.put(request.getTag(), requests);
         }
         mCahceRequestMap.get(request.getTag()).add(request);
