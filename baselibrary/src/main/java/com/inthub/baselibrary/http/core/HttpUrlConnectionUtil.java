@@ -120,7 +120,7 @@ public class HttpUrlConnectionUtil {
                     outputStream.flush();
                     outputStream.close();
                 }else {
-                    throw new AppException(AppException.ErrType.SERVER, "outputstream is null");
+                    throw new AppException(AppException.ErrType.SERVER, "server exection");
                 }
             } catch (IOException e) {
                 throw new AppException(AppException.ErrType.IO, "the post outputstream can't be closed");
